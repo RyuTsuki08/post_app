@@ -1,0 +1,22 @@
+{
+  "name": "post_app",
+  "version": "1.0.0",
+  "description": "Application of posts with MERN_STACK",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "keywords": [],
+  "author": "Tomas Christian - TOMXED",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1",
+    "font-awesome": "^4.7.0",
+    "mongoose": "^6.5.2",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.19",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+}
