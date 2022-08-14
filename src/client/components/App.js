@@ -52,17 +52,17 @@ function App(props)
                                         <ModeEditRoundedIcon id="button-card" onClick={(_id) => 
                                         {
                                             handleOpen()
-                                            NewForm();
                                             fetch(`/api/posts/${post._id}`)
                                             .then(res => res.json())
                                             .then(data => {
-                                                addPost({
-                                                    _id: data._id,
-                                                    username: data.username,
-                                                    title: data.title,
-                                                    filename: data.filename,
-                                                    description: data.description
-                                                })
+                                                console.log(data)
+                                                // addPost({
+                                                //     // _id: data._id,
+                                                //     // username: data.username,
+                                                //     // title: data.title,
+                                                //     // filename: data.filename,
+                                                //     // description: data.description
+                                                // })
                                             })
                                             .catch(err => console.error(err))
                                         }}></ModeEditRoundedIcon>

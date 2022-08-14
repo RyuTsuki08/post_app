@@ -34,17 +34,16 @@
 }
 
 #content-modal{
-    width: 50vw;
     color: #f3f3f3;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-content: center;
-    justify-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 18%;
+    height: 80vh;
 }
 
 #content-modal>img{
-    width: 10vw;
+    width: 38vw;
 }
 
 .caaard{
