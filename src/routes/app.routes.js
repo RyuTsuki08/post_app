@@ -1,12 +1,30 @@
 const Express = require('express');
+const multer = require('multer');
+const path = require('path');
+const uuid = require('uuid')
 const Router = Express.Router();
 const Post = require('../models/Post.js');
+//Configuracion de como se obtendran las imagenes
+const storage = multer.diskStorage({
+    destination: path.join(__dirname, '..', 'public', 'img', 'uploads'),
+    filename: (req, file, cb, filename) => 
+    {
+        cb(null, uuid.v4()+ path.extname(file.originalname))
+    }
+})
+const upload = multer({storage : storage})
 
 //Obetener las publicaciones
 Router.get('/posts', async (req, res) => 
 {
     const Posts = await Post.find();
     res.json(Posts)
+})
+
+Router.get('/posts/:filename', async (req, res) =>
+{
+   const imgPost = await Post.findOne({filename: req.params.filename});
+   res.json(imgPost)
 })
 
 // Obtener publicacion (de modo mas especifico) por ID
@@ -22,13 +40,19 @@ Router.get('/posts/:id', async (req, res) =>
 });
 
 //Crear publicacion
-Router.post('/posts', async (req, res) => 
+Router.post('/posts', upload.single('image'), async (req, res) => 
 {
-    const { username, title, description } = req.body;
-    if(username && title && description)
+    const obj = {
+        username: req.body.username,
+        filename: req.file.filename,
+        path: req.file.path,
+        title: req.body.title,
+        description: req.body.description
+    };
+    if(obj)
     {
-        const post = new Post({username, title, description});
-        await post.save();
+        const post = new Post(obj);
+        post.save();
         res.json({Status: "Post public"});
     } else{
         res.json({"Status" : "404"})
@@ -54,4 +78,4 @@ Router.delete('/posts/:id', async (req, res) =>
 
 
 
-module.exports = Router;
+module.exports = Router, storage;

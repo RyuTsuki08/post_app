@@ -1,0 +1,129 @@
+
+
+#scroll-app{
+    width: 55vw;
+    height: auto;
+    background-color: #f3f3f3;
+    margin-left: 24%;
+    margin-right: 30%;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    width: 63vw;
+    margin-left: -24px;
+}
+
+#img-outer>img{
+    width: 30vw;
+}
+
+.caaard{
+    width: 30vw;
+}
+
+.card{
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+.card-content{
+    padding: 3%;
+}
+
+.card-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-header>h3{
+    color: #979797;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.choose-file{
+    padding: 2%;
+    width: auto;
+}
+
+#title-username{
+    display: flex;
+    flex-direction: row;
+}
+
+.titles{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+#button-card{
+    color: #868686;
+}
+
+
+#button-card:hover{
+    cursor: pointer;
+    color: #2b2b2b;
+}
+
+
+.titles>span{
+    font-size: small;
+    color: #979797;
+}
+
+.titles>h2{
+    margin-left: 10px;
+    font-size: medium;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+}
+
+.icons{
+    display: flex;
+    flex-direction: row;
+    padding: 4px;
+    width: 9%;
+    justify-content: space-between;
+}
+
+.images{
+    margin: -17px;
+    width: 55vw;
+    background-color: #868686;
+    display: flex;
+    justify-content: center;
+}
+
+.images>img{
+    width: 601px;
+    height: auto;
+}
+
+.card-body{
+    width: auto;
+    height: auto;
+}
+
+.heart{
+    color: #868686;
+}
+
+.heartII{
+    color: #490a0a;
+}
