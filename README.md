@@ -25,3 +25,5 @@ Challenge #1 - For Ricardo and Granada. This is my application to posts (mini-in
 > npm run webpack // Inicia webpack para compilar cambios
 
 >npm start //Inicia con Node
+
+#localhost:2112
