@@ -21,22 +21,11 @@ Router.get('/posts', async (req, res) =>
     res.json(Posts)
 })
 
-Router.get('/posts/:filename', async (req, res) =>
-{
-   const imgPost = await Post.findOne({filename: req.params.filename});
-   res.json(imgPost)
-})
-
 // Obtener publicacion (de modo mas especifico) por ID
 Router.get('/posts/:id', async (req, res) => 
 {
-    if(req.params.id)
-    {
-        const post_id = await Post.findById(req.params.id);
-        res.json(post_id);
-    } else {
-        res.json({"Status": "Post not found"})
-    }
+    const post_id = await Post.findById({_id: req.params.id});
+    res.json(post_id);
 });
 
 //Crear publicacion

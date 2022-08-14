@@ -6,11 +6,12 @@ import ModeEditRoundedIcon from '@mui/icons-material/ModeEditRounded';
 import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
 import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
 import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
+import axios from 'axios';
 
 function App(props)
 {
     const [post, addPost] = useState({_id: '', username : '', filename: '' ,posts: [] ,  title: '', description: ''});
-    
+
     function fetchPosts()
     {
        fetch('/api/posts')
@@ -44,7 +45,15 @@ function App(props)
                                         {
                                             fetch(`/api/posts/${post._id}`)
                                             .then(res => res.json())
-                                            .then(data => console.log(data))
+                                            .then(data => {
+                                                addPost({
+                                                    _id: data._id,
+                                                    username: data.username,
+                                                    title: data.title,
+                                                    filename: data.filename,
+                                                    description: data.description
+                                                })
+                                            })
                                             .catch(err => console.error(err))
                                         }}></ModeEditRoundedIcon>
                                         <RemoveRoundedIcon id="button-card" onClick={(_id) => 
@@ -88,4 +97,4 @@ function App(props)
     )
 }
 
-export default App;
+export default {App, handleSubmit};

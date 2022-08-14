@@ -4,7 +4,7 @@ import { FormControl, FilledInput ,TextField, InputAdornment, InputBase} from '@
 import Button from '@mui/material/Button';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
-function FormCard()
+function FormCard(submitForm)
 {
 
     const [post, addPost] = useState({username : '', filename: '' ,  title: '', description: ''});
@@ -13,22 +13,13 @@ function FormCard()
     {
        fetch('/api/posts')
        .then(res => res.json())
-       .then(data => addPost({posts: data}))
+       .then(data => console.log(data))
        .catch(err => console.error(err))
     }
 
     const handleSubmit = async (e) => 
     {
         e.preventDefault();
-        if(post.username == '' && post.title == '' && post.description == '')
-        {
-           const res = await axios.put('http://localhost:2112/api/posts', {
-            username: post.username,
-            title: post.title,
-            description: post.description
-           })
-        //    fetchPosts();
-        } else {
                 const formData = new FormData();
                 formData.append('username', post.username);
                 formData.append('image', post.filename)
@@ -43,8 +34,6 @@ function FormCard()
             });
             fetchPosts();
         }
-        
-    }
 
     return(
         <div className='container'>
@@ -53,7 +42,7 @@ function FormCard()
                             <h3>What you think today?</h3>
                         </div>
                         <div className='card-content'>
-                <form encType='multipart/form-data' className='form' onSubmit={handleSubmit}>
+                <form encType='multipart/form-data' className='form' onSubmit={handleSubmit()}>
                     <div className='form-group'>
                 <TextField   id="input-with-icon-textfield"
             label="Username"
