@@ -4,18 +4,10 @@ import { FormControl, FilledInput ,TextField, InputAdornment, InputBase} from '@
 import Button from '@mui/material/Button';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 
-function FormCard(submitForm)
+function FormCard()
 {
 
     const [post, addPost] = useState({username : '', filename: '' ,  title: '', description: ''});
-
-    function fetchPosts()
-    {
-       fetch('/api/posts')
-       .then(res => res.json())
-       .then(data => console.log(data))
-       .catch(err => console.error(err))
-    }
 
     const handleSubmit = async (e) => 
     {
@@ -32,7 +24,6 @@ function FormCard(submitForm)
                 title: '',
                 description: ''
             });
-            fetchPosts();
         }
 
     return(
@@ -42,7 +33,7 @@ function FormCard(submitForm)
                             <h3>What you think today?</h3>
                         </div>
                         <div className='card-content'>
-                <form encType='multipart/form-data' className='form' onSubmit={handleSubmit()}>
+                <form encType='multipart/form-data' className='form' onSubmit={handleSubmit}>
                     <div className='form-group'>
                 <TextField   id="input-with-icon-textfield"
             label="Username"

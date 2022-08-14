@@ -4,14 +4,22 @@ import Navigation from './Navigation';
 import Avatar from '@mui/material/Avatar';
 import ModeEditRoundedIcon from '@mui/icons-material/ModeEditRounded';
 import RemoveRoundedIcon from '@mui/icons-material/RemoveRounded';
-import FavoriteBorderRoundedIcon from '@mui/icons-material/FavoriteBorderRounded';
-import FavoriteRoundedIcon from '@mui/icons-material/FavoriteRounded';
+import { FormControl, FilledInput ,TextField, InputAdornment, InputBase} from '@mui/material';
+import Button from '@mui/material/Button';
 import axios from 'axios';
+import { Modal } from '@mui/material';
+import Box from '@mui/material/Box';
+import AccountCircle from '@mui/icons-material/AccountCircle';
+import Typography from '@mui/material/Typography';
+
+
 
 function App(props)
 {
     const [post, addPost] = useState({_id: '', username : '', filename: '' ,posts: [] ,  title: '', description: ''});
-
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     function fetchPosts()
     {
        fetch('/api/posts')
@@ -43,6 +51,8 @@ function App(props)
                                     <div className='icons'>
                                         <ModeEditRoundedIcon id="button-card" onClick={(_id) => 
                                         {
+                                            handleOpen()
+                                            NewForm();
                                             fetch(`/api/posts/${post._id}`)
                                             .then(res => res.json())
                                             .then(data => {
@@ -56,6 +66,19 @@ function App(props)
                                             })
                                             .catch(err => console.error(err))
                                         }}></ModeEditRoundedIcon>
+                                        <Modal
+                                        open={open}
+                                        onClose={handleClose}
+                                        aria-labelledby="modal-modal-title"
+                                        aria-describedby="modal-modal-description"
+                                        >
+                                        <Box >
+                                        <div id="content-modal">
+                                            <h3>Lo siento, no puedo editar tu post aun</h3>
+                                            <img src='img/editPost.svg'/>
+                                        </div>
+                                        </Box>
+                                    </Modal>
                                         <RemoveRoundedIcon id="button-card" onClick={(_id) => 
                                         { 
                                                if(confirm('Are you sure of delete it this post?')){
@@ -97,4 +120,5 @@ function App(props)
     )
 }
 
-export default {App, handleSubmit};
+
+export default App;

@@ -20,11 +20,12 @@ function Navigation(props)
          <form className="d-flex" role="search" onSubmit={(e) => 
             {
                 e.preventDefault();
-                axios.get(`http://localhost:2112/api/posts/${post.posts[0]._id}`)
-                .then((res) => 
+                if(post._id)
                 {
-                    console.log(res.data)
-                })
+                axios.get(`http://localhost:2112/api/posts/${post._id}`)
+                } else {
+                    alert('Not found')
+                }
             }}>
             <input className="form-control me-2" type="search" placeholder="search for username" aria-label="Search" onChange=
             {
