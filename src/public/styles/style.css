@@ -71,6 +71,10 @@
     color: #979797;
 }
 
+.Card-post{
+    width: 80%;
+}
+
 .form{
     display: flex;
     flex-direction: column;
@@ -138,7 +142,7 @@
 }
 
 .images>img{
-    width: 601px;
+    width: auto;
     height: auto;
 }
 
@@ -147,10 +151,10 @@
     height: auto;
 }
 
-.heart{
-    color: #868686;
-}
-
-.heartII{
-    color: #490a0a;
+#scroll-posts{
+    display: flex;
+justify-content: space-around;
+flex-direction: column;
+align-content: center;
+margin-left: 100px;
 }
